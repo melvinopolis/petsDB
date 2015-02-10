@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>All Pets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Animal</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Image</th>
+      <th>Pet club</th>
+      <th>Owner</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pets.each do |pet| %>
+      <tr>
+        <td><%= pet.name %></td>
+        <td><%= pet.animal %></td>
+        <td><%= pet.gender %></td>
+        <td><%= pet.age %></td>
+        <td><img style="height:200px" src="<%= pet.image %>">
+        <td><%= pet.pet_club.name %></td>
+        <td><%= pet.owner.name %></td>
+        <td><%= link_to 'Show', pet %></td>
+        <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
+        <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pet', new_pet_path %>
